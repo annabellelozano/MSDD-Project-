@@ -2,6 +2,11 @@ import sys
 from PyQt5.QtWidgets import (QApplication, QWidget, QLabel, QLineEdit, QPushButton,QVBoxLayout, QMessageBox)
 from PyQt5.QtCore import Qt
 
+'''
+General Notes:
+
+'''
+
 class LoginWindow(QWidget):
     def __init__(self):
         super().__init__()
@@ -42,6 +47,8 @@ class LoginWindow(QWidget):
             self.open_menu()
         if username == "justin" and password == "5678":
             self.open_menu()
+        if username == "annabelle" and password == "2468":
+            self.open_menu()
         else:
             QMessageBox.warning(self, "Error", "Incorrect username or password.")
 
@@ -54,8 +61,8 @@ class LoginWindow(QWidget):
 class MenuWindow(QWidget):
     def __init__(self):
         super().__init__()
-        self.setWindowTitle("Game Menu")
-        self.setFixedSize(400, 300)
+        self.setWindowTitle("Stock Market Investment Fantasy League - Main Menu")
+        self.setFixedSize(600, 600)
         self.initUI()
 
     def initUI(self):
@@ -63,14 +70,18 @@ class MenuWindow(QWidget):
         title.setAlignment(Qt.AlignCenter)
         title.setStyleSheet("font-size: 24px; font-weight: bold;")
 
-        play_btn = QPushButton("Play Game")
-        settings_btn = QPushButton("Settings")
-        quit_btn = QPushButton("Quit")
+        trade_btn = QPushButton("Trade") #takes you to another screen that says pick a stock to trade, then "input how many you want to trade"
+        miniGame_btn = QPushButton("Mini Games") #takes you to another screen that has 1 mini game, multiple choice game
+        stockInfo_btn = QPushButton("Stock Info") #take you to a table of "current stocks" but just make up values
+        settings_btn = QPushButton("Settings") #takes you to a settings page, does nothing
+        quit_btn = QPushButton("Quit") #already does what its supossed to do
         quit_btn.clicked.connect(self.close)
 
         layout = QVBoxLayout()
         layout.addWidget(title)
-        layout.addWidget(play_btn)
+        layout.addWidget(trade_btn)
+        layout.addWidget(miniGame_btn)
+        layout.addWidget(stockInfo_btn)
         layout.addWidget(settings_btn)
         layout.addWidget(quit_btn)
 
